@@ -1,9 +1,13 @@
 require "sinatra"
 require "sinatra/reloader"
+require "http"
+
+api_url = "https://api.exchangerate.host/list?access_key=#{ENV["EXCHANGE_RATE_KEY"]}"
+
+x = HTTP.get(api_url)  
 
 get("/") do
-  "
-  <h1>Welcome to your Sinatra App!</h1>
-  <p>Define some routes in app.rb</p>
-  "
+
+  puts x.to_s
+
 end
